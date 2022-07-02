@@ -7,7 +7,7 @@ const errorMiddleware = require('./error-middleware');
 
 const app = express();
 const publicPath = path.join(__dirname, 'public');
-// eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: {
@@ -29,15 +29,11 @@ fetch('https://api.petfinder.com/v2/oauth2/token', {
   }
 })
   .then(res => res.json())
-  // eslint-disable-next-line no-console
+  // eslint-disable-next-line
   .then(data => console.log(data));
 
-// app.get('https://api.petfinder.com/v2/animals?limit=100', (req, res, next) => {
+app.get('https://api.petfinder.com/v2/animals?limit=100', (req, res, next) => {
 
-// });
-
-app.get('/api/hello', (req, res) => {
-  res.json({ hello: 'world' });
 });
 
 app.use(errorMiddleware);

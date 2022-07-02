@@ -1,12 +1,7 @@
 {
   "workspaceFolder": "/workspace",
-  "image": "learningfuze/lfz-code",
-  "mounts": [
-    "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-    "source=${containerWorkspaceFolderBasename}-home_dev,target=/home/dev",
-    "source=${containerWorkspaceFolderBasename}-postgres_data,target=/var/lib/postgresql",
-    "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/dev/.ssh,type=bind"
-  ],
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "dev",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -14,7 +9,7 @@
       ]
     }
   },
-  "postCreateCommand": "[ ! -f package-lock.json ] || npm ci; sudo chown -R dev:dev ~/.ssh && chmod 700 ~/.ssh && chmod 600 ~/.ssh/* && chmod 644 ~/.ssh/*.pub",
+  "postCreateCommand": "[ -f package-lock.json ] && npm ci",
   "otherPortsAttributes": {
     "onAutoForward": "silent"
   }
