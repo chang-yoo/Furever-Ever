@@ -1,3 +1,3 @@
-# final-project
+# Furever&Ever
 
 A full stack JavaScript solo project.
