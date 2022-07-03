@@ -7,6 +7,8 @@ export default function App() {
     getAccessToken();
   });
   return (
-    <div><Home/></div>
+    <div className="h-100 bg-main">
+      <Home/>
+    </div>
   );
 }

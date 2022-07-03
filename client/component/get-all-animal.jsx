@@ -17,4 +17,5 @@ export default function GetAllAnimal(props) {
         setPets(data);
       });
   }, [pets === []]);
+  return pets;
 }
