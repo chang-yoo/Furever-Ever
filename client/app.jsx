@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
-import GetAccessToken from './components/get-access-token';
+import { getAccessToken } from './component/get-token';
+import Home from './pages/home';
 
 export default function App() {
   useEffect(() => {
-    <GetAccessToken />;
+    getAccessToken();
   });
   return (
-    <div>hi</div>
+    <div className="h-100 bg-main">
+      <Home/>
+    </div>
   );
 }
