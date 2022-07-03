@@ -1,8 +1,11 @@
-import React from 'react';
-import Home from './pages/home';
+import React, { useEffect } from 'react';
+import GetAccessToken from './components/get-access-token';
 
-export default class App extends React.Component {
-  render() {
-    return <Home />;
-  }
+export default function App() {
+  useEffect(() => {
+    <GetAccessToken />;
+  });
+  return (
+    <div>hi</div>
+  );
 }
