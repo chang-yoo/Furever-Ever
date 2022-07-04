@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const getAccessToken = () => {
+export const getAccessToken = () => {
   const tokenExist = localStorage.getItem('API_TOKEN');
   if (tokenExist === null) {
     fetch('https://api.petfinder.com/v2/oauth2/token', {
@@ -41,5 +41,3 @@ const getAccessToken = () => {
       });
   }
 };
-
-module.exports = { getAccessToken };

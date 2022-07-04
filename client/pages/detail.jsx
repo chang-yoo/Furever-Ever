@@ -52,7 +52,7 @@ export default function GetDetails(props) {
     }
 
     return (
-    <div className="w-100 mx-auto mt-5 d-flex flex-md-row flex-column justify-content-center">
+    <div className="w-100 mx-auto mt-3 d-flex flex-lg-row flex-column justify-content-center">
       <div className="col-lg-5 col-md-12 mx-3">
         <div className="col-fluid h-70">
           <img src={photo}></img>
@@ -60,9 +60,9 @@ export default function GetDetails(props) {
         <div>
           <small>Contact</small>
           <br/>
-          <a href={'tel:' + phone}>{phone}</a>
+          <a href={'tel:' + phone}>Phone: {phone}</a>
           <br/>
-          <a href={'mailto:' + email}>{email}</a>
+          <a href={'mailto:' + email}>Email: {email}</a>
         </div>
         <hr/>
         <div>

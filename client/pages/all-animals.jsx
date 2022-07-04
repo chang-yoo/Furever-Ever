@@ -4,6 +4,9 @@ const { getAccessToken } = require('../component/petfinder');
 
 export default function GetAllAnimal() {
   const accessToken = localStorage.getItem('API_TOKEN');
+  if (accessToken === null) {
+    getAccessToken();
+  }
   const [pets, setPets] = useState(() => {
     fetch('https://api.petfinder.com/v2/animals?limit=100', {
       headers: {
@@ -12,9 +15,6 @@ export default function GetAllAnimal() {
     })
       .then(res => res.json())
       .then(data => {
-        if (data.length === 0) {
-          getAccessToken();
-        }
         setPets(data.animals);
       });
   });
