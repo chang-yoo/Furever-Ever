@@ -21,24 +21,47 @@ export default function App() {
   }, [location]);
   const renderPage = () => {
     if (path === '') {
-      return <Home/>;
+      return (
+      <div>
+        <Home/>;
+        </div>
+      );
     }
     if (path === 'detail') {
-      return <GetDetails petId={route.params.get('petId')} />;
+      return (
+        <div>
+        <Header />
+        <GetDetails petId={route.params.get('petId')} />;
+        </div>
+      );
     }
     if (path === 'recent') {
-      return <GetAllAnimal/>;
+      return (
+        <div>
+        <Header />
+        <GetAllAnimal/>;
+        </div>
+      );
     }
     if (path === 'random') {
-      return <GetRandom location={route.params.get('location')}/>;
+      return (
+        <div>
+        <Header />
+        <GetRandom location={route.params.get('location')}/>;
+        </div>
+      );
     }
     if (path === 'favorite') {
-      return <FavoritePage/>;
+      return (
+        <div>
+        <Header />
+        <FavoritePage/>;
+        </div>
+      );
     }
   };
   return (
     <div>
-      <Header/>
       {renderPage()}
     </div>
   );
