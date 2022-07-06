@@ -127,9 +127,9 @@ hr {
 }
 
 .icon-border {
-  border: 5px solid #f1f3f4;
   padding: 0.8rem;
   border-radius: 100%;
+  box-shadow: 0 7px 5px 1px rgb(0, 0, 0, 0.1);
 }
 
 .logo-container {

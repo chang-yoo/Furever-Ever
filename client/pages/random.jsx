@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 
 export default function GetRandom(props) {
   const accessToken = localStorage.getItem('API_TOKEN');
+  const location = props.location;
   const [animal, setAnimal] = useState(() => {
     fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
       headers: {
@@ -24,6 +25,30 @@ export default function GetRandom(props) {
       const { medium } = firstImage;
       photo = medium;
     }
+    // eslint-disable-next-line
+    function handleCatButton(props){
+      fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=cat&limit=100`, {
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          setAnimal(data.animals);
+        });
+    }
+    // eslint-disable-next-line
+    function handleDogButton(props){
+      fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=dog&limit=100`, {
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          setAnimal(data.animals);
+        });
+    }
     let leftArrow = 'fa-xl fa-solid fa-arrow-left';
     let rightArrow = 'fa-xl fa-solid fa-arrow-right';
     let iconLeftBorder = 'icon-arrow-border';
@@ -42,10 +67,24 @@ export default function GetRandom(props) {
       rightArrow = 'fa-xl fa-solid fa-arrow-right';
       iconRightBorder = 'icon-border';
     }
-    const distance = animal[current].distance.toFixed(2);
-    return (
+    let distance = null;
+    if (animal[current].distance !== null) {
+      distance = animal[current].distance.toFixed(2);
+    }
+    if (animal) {
+      return (
     <div className="w-100">
       <div className="col-lg-6 mt-3 col-md-10 col-sm-12 mx-auto">
+        <div className="w-90 mx-auto">
+          <div className="d-flex justify-content-between">
+            <button onClick={handleCatButton}>
+              Cat
+            </button>
+            <button onClick={handleDogButton}>
+              Dog
+            </button>
+          </div>
+        </div>
         <div className="mx-auto text-center">
           <div className="w-90 box-shadows mx-auto pb-2">
             <div className="pt-3 pb-3 w-90 random-image-container mx-auto">
@@ -76,6 +115,7 @@ export default function GetRandom(props) {
         </div>
       </div>
     </div>
-    );
+      );
+    }
   }
 }
