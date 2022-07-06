@@ -4,6 +4,7 @@ const fetch = require('node-fetch');
 
 export default function GetRandom(props) {
   const accessToken = localStorage.getItem('API_TOKEN');
+  const location = props.location;
   const [animal, setAnimal] = useState(() => {
     fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
       headers: {
@@ -24,53 +25,88 @@ export default function GetRandom(props) {
       const { medium } = firstImage;
       photo = medium;
     }
-    let leftArrow = 'fa-2x fa-solid fa-arrow-left';
-    let rightArrow = 'fa-2x fa-solid fa-arrow-right';
+    // eslint-disable-next-line
+    function handleCatButton(props){
+      fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=cat&limit=100`, {
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          setAnimal(data.animals);
+        });
+    }
+    // eslint-disable-next-line
+    function handleDogButton(props){
+      fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=dog&limit=100`, {
+        headers: {
+          Authorization: 'Bearer ' + accessToken
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          setAnimal(data.animals);
+        });
+    }
+    let leftArrow = 'fa-xl fa-solid fa-arrow-left';
+    let rightArrow = 'fa-xl fa-solid fa-arrow-right';
     let iconLeftBorder = 'icon-arrow-border';
     let iconRightBorder = 'icon-arrow-border';
     if (current === 0) {
       leftArrow = 'hidden';
       iconLeftBorder = 'hidden';
     } else {
-      leftArrow = 'fa-2x fa-solid fa-arrow-left';
+      leftArrow = 'fa-xl fa-solid fa-arrow-left';
       iconLeftBorder = 'icon-border';
     }
     if (current === 99) {
       rightArrow = 'hidden';
       iconRightBorder = 'hidden';
     } else {
-      rightArrow = 'fa-2x fa-solid fa-arrow-right';
+      rightArrow = 'fa-xl fa-solid fa-arrow-right';
       iconRightBorder = 'icon-border';
     }
-    return (
+    let distance = null;
+    if (animal[current].distance !== null) {
+      distance = animal[current].distance.toFixed(2);
+    }
+    if (animal) {
+      return (
     <div className="w-100">
-      <div className="col-lg-6 col-md-10 col-sm-12 mx-auto">
-      <hr/>
-      <div className="text-center">
-        <a href="#">
-          <h3 className="text-main">Location: {props.location}</h3>
-        </a>
-      </div>
-        <hr/>
+      <div className="col-lg-6 mt-3 col-md-10 col-sm-12 mx-auto">
+        <div className="w-90 mx-auto">
+          <div className="d-flex justify-content-between filter-container">
+            <button className="w-25 cat-button text-white" onClick={handleCatButton}>
+              CAT
+            </button>
+            <button className="w-25 dog-button text-white" onClick={handleDogButton}>
+              DOG
+            </button>
+          </div>
+        </div>
         <div className="mx-auto text-center">
+          <div className="w-90 box-shadows mx-auto pb-2">
+            <div className="pt-3 pb-3 w-90 random-image-container mx-auto">
+              <a href={`#detail?petId=${animal[current].id}`}><img className="object-fit"src={photo}/></a>
+            </div>
           <div>
-            <p className="text-main">Hi! I&apos;m {name}</p>
+            <div className="w-90 mx-auto">
+              <p className="pb-0 mb-0 text-main fw-bold text-start">Hi! I&apos;m {animal[current].name}</p>
+              <p className="pt-0 mt-0 pb-0 mb-0 text-gray text-end">{animal[current].contact.address.city}, {animal[current].contact.address.state}</p>
+              <p className="pt-0 mt-0 text-gray text-end">{distance}miles</p>
+            </div>
           </div>
-          <div className="random-image-container">
-              <img className="object-fit"src={photo}/>
           </div>
-          <div className="my-1 text-center">
-            <a href={`#detail?petId=${animal[current].id}`} className="text-main">More Detail</a>
-          </div>
-          <div className="d-flex justify-content-around mt-3">
+          <div className="d-flex justify-content-around mt-4">
             <div className={iconLeftBorder}>
               <i onClick={e => setCurrent(current - 1)} className={leftArrow}></i>
             </div>
             <div className="icon-border">
-              <i onClick={e => location.reload()} className="fa-2x fa-solid fa-arrows-rotate"></i>
+              <i onClick={e => location.reload()} className="fa-xl fa-solid fa-arrows-rotate"></i>
             </div>
             <div className="icon-border">
-                <i onClick={() => handleLocalStorage(animal[current])} className="fa-2x fa-solid fa-heart"></i>
+                <i onClick={() => handleLocalStorage(animal[current])} className="fa-xl fa-solid fa-heart"></i>
             </div>
               <div className={iconRightBorder}>
               <i onClick={e => setCurrent(current + 1)} className={rightArrow}></i>
@@ -79,6 +115,7 @@ export default function GetRandom(props) {
         </div>
       </div>
     </div>
-    );
+      );
+    }
   }
 }

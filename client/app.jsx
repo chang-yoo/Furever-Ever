@@ -7,7 +7,7 @@ import GetRandom from './pages/random';
 import Header from './component/header';
 import FavoritePage from './pages/favorite';
 // eslint-disable-next-line
-const { getAccessToken } = require('./component/petfinder');
+const { getAccessToken } = require('./component/petfinder')
 
 export default function App() {
   const [route, setRoute] = useState(parseRoute(window.location.hash));
@@ -21,24 +21,47 @@ export default function App() {
   }, [location]);
   const renderPage = () => {
     if (path === '') {
-      return <Home/>;
+      return (
+      <div>
+        <Home/>
+        </div>
+      );
     }
     if (path === 'detail') {
-      return <GetDetails petId={route.params.get('petId')} />;
+      return (
+        <div>
+        <Header />
+        <GetDetails petId={route.params.get('petId')} />
+        </div>
+      );
     }
     if (path === 'recent') {
-      return <GetAllAnimal/>;
+      return (
+        <div>
+        <Header />
+        <GetAllAnimal location={route.params.get('location')} />
+        </div>
+      );
     }
     if (path === 'random') {
-      return <GetRandom location={route.params.get('location')}/>;
+      return (
+        <div>
+        <Header />
+        <GetRandom location={route.params.get('location')}/>
+        </div>
+      );
     }
     if (path === 'favorite') {
-      return <FavoritePage/>;
+      return (
+        <div>
+        <Header />
+        <FavoritePage/>
+        </div>
+      );
     }
   };
   return (
     <div>
-      <Header/>
       {renderPage()}
     </div>
   );
