@@ -1,5 +1,5 @@
 .h-100 {
-  min-height: 100vh;
+  min-height: 83vh;
   height: 100%;
 }
 
@@ -28,20 +28,37 @@ input {
   border: 1px solid white;
 }
 
+.bg-main {
+  background-color: #7635f9;
+}
+
 .border-filter {
   border: 1px solid #7635f9 !important;
-  background-color: #7635f9;
   border-radius: 10px;
+}
+
+.fa-arrow-right {
+  color: #278ff8;
+}
+
+.fa-heart {
+  color: red;
+}
+
+.fa-arrows-rotate {
+  color: #61df9a;
+}
+
+.text-main {
+  color: #7635f9;
+}
+
+.fa-arrow-left {
+  color: #feca67;
 }
 
 .btn-primary {
   background-color: white !important;
-}
-
-img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
 }
 
 a {
@@ -50,8 +67,33 @@ a {
   color: black;
 }
 
+.random-image-container {
+  width: 50%;
+  min-height: 30vw;
+}
+
+.object-fit {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 a,
 button,
 i:hover {
   cursor: pointer;
+}
+
+hr {
+  border: 1px solid #7635f9 !important;
+}
+
+.icon-border {
+  border: 5px solid #f1f3f4;
+  border-radius: 100%;
+}
+
+.logo-container {
+  width: 100%;
+  height: 50px;
 }
