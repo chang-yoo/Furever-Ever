@@ -55,7 +55,7 @@ export default function GetDetails(props) {
     <div className="w-100 mx-auto mt-3 d-flex flex-lg-row flex-column justify-content-center">
       <div className="col-lg-5 col-md-12 mx-3">
         <div className="col-fluid h-70">
-          <img src={photo}></img>
+          <img className="h-75"src={photo}></img>
         </div>
         <div>
           <small>Contact</small>
