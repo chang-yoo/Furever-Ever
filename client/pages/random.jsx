@@ -76,12 +76,12 @@ export default function GetRandom(props) {
     <div className="w-100">
       <div className="col-lg-6 mt-3 col-md-10 col-sm-12 mx-auto">
         <div className="w-90 mx-auto">
-          <div className="d-flex justify-content-between">
-            <button onClick={handleCatButton}>
-              Cat
+          <div className="d-flex justify-content-between filter-container">
+            <button className="w-25 cat-button text-white" onClick={handleCatButton}>
+              CAT
             </button>
-            <button onClick={handleDogButton}>
-              Dog
+            <button className="w-25 dog-button text-white" onClick={handleDogButton}>
+              DOG
             </button>
           </div>
         </div>
@@ -98,7 +98,7 @@ export default function GetRandom(props) {
             </div>
           </div>
           </div>
-          <div className="d-flex justify-content-around mt-5">
+          <div className="d-flex justify-content-around mt-4">
             <div className={iconLeftBorder}>
               <i onClick={e => setCurrent(current - 1)} className={leftArrow}></i>
             </div>
