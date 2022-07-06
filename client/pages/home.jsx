@@ -21,7 +21,7 @@ export default function Home() {
         <div className="home-image-container">
           <img className="object-fit" src="/furever-paws.png"></img>
         </div>
-        <div className="w-90 h-30 mt-5 text-center mx-auto box-shadow">
+        <div className="w-90 h-30 mt-5 pt-3 pb-3 text-center mx-auto box-shadow">
           <form onSubmit={handleSubmit}>
             <div className="w-100 h-30 d-flex flex-column align-items-center justify-content-around search-icon-container">
               <input

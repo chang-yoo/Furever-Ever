@@ -8,10 +8,9 @@ export default function Header() {
             <img className="logo-container" src="furever-paws.png"></img>
           </a>
         </div>
-        <div>
-          <a href="#"><h2 className="text-black">Furever&Ever</h2></a>
-        <i onClick={() => { window.location.hash = 'favorite'; }} className="fa-2x fa-solid fa-heart"></i>
-        </div>
+        {/* <div className="favorite-icon-container">
+          <i onClick={()=> window.location.hash = 'favorite'} className="fa-2x fa-solid fa-heart link-to-favorite"></i>
+        </div> */}
       </div>
   );
 }
