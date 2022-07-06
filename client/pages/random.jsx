@@ -92,7 +92,7 @@ export default function GetRandom(props) {
             </div>
           <div>
             <div className="w-90 mx-auto">
-              <p className="pb-0 mb-0 text-black text-start">Hi! I&apos;m {animal[current].name}</p>
+              <p className="pb-0 mb-0 text-main fw-bold text-start">Hi! I&apos;m {animal[current].name}</p>
               <p className="pt-0 mt-0 pb-0 mb-0 text-gray text-end">{animal[current].contact.address.city}, {animal[current].contact.address.state}</p>
               <p className="pt-0 mt-0 text-gray text-end">{distance}miles</p>
             </div>
