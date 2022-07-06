@@ -2,12 +2,23 @@ import React, { useState, useEffect } from 'react';
 
 export default function FavoritePage() {
   const [favorited, setFavorited] = useState(null);
+  const [edit, setEdit] = useState(0);
   useEffect(() => {
     if (!favorited) {
       const favoritedPets = JSON.parse(localStorage.getItem('favorite'));
       setFavorited(favoritedPets);
     }
   }, [favorited]);
+  function handleFavorite(event) {
+    const favored = favorited.pets;
+    const newFavored = favored.filter(eachPet => String(eachPet.id) !== event.target.id);
+    favorited.pets = newFavored;
+    setEdit(edit + 1);
+    localStorage.setItem('favorite', JSON.stringify(favorited));
+  }
+  if (favorited !== null && favorited.pets.length === 0) {
+    return <h5>Your favorite list is currently empty</h5>;
+  }
   if (favorited !== null) {
     const pets = favorited.pets;
     return (
@@ -27,8 +38,7 @@ export default function FavoritePage() {
                   <img src={photo}></img>
                 </a>
               </div>
-              { /* eslint-disable-next-line */}
-              <i onClick={(event) => console.log(event.target.id)} className="fa-xl fa-solid fa-x pt-4"></i>
+              <i id={eachPet.id}onClick={handleFavorite} className="fa-xl fa-solid fa-x pt-4"></i>
             </div>
           </div>
         );
