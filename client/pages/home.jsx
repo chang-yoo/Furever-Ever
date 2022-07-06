@@ -5,14 +5,6 @@ export default function Home() {
   return (
     <div className="w-100 h-100">
       <div className="d-flex flex-column h-100 justify-content-center align-items-center">
-          <div className="w-50 d-flex flex-column align-items-center mb-5">
-            <div className="w-10 h-25 mx-auto">
-              <img src="furever-paws.png"></img>
-            </div>
-            <div>
-              <h2>Furever&Ever</h2>
-            </div>
-          </div>
         <div className="w-100 h-75 text-center mx-auto box-shadow border-filter">
           <form onSubmit={e => e.preventDefault()}>
             <div>
@@ -42,7 +34,7 @@ export default function Home() {
             </div> */}
             <div>
               <a href={`#random?location=${location}`} types="submit" className="w-75 btn btn-primary h5 text-black">Submit</a>
-              <a href="#recent" className="w-75 btn btn-primary h5 text-black">Recent 100 Pets</a>
+              <a href="#recent" className="w-75 btn btn-primary h5 text-black">See All</a>
             </div>
           </form>
         </div>

@@ -4,6 +4,7 @@ import GetAllAnimal from './pages/all-animals';
 import Home from './pages/home';
 import GetDetails from './pages/detail';
 import GetRandom from './pages/random';
+import Header from './component/header';
 // eslint-disable-next-line
 const { getAccessToken } = require('./component/petfinder');
 
@@ -31,5 +32,10 @@ export default function App() {
       return <GetRandom location={route.params.get('location')}/>;
     }
   };
-  return renderPage();
+  return (
+    <div>
+      <Header/>
+      {renderPage()}
+    </div>
+  );
 }
