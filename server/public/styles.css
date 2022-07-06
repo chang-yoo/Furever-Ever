@@ -44,6 +44,10 @@ input {
   border: 1.5px solid #7635f9 !important;
 }
 
+.height-1rem {
+  min-height: 7vh;
+}
+
 .main-icon-container {
   border: 1.5px solid #838383 !important;
 }

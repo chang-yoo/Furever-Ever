@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 const fetch = require('node-fetch');
 const { getAccessToken } = require('../component/petfinder');
 
-export default function GetAllAnimal() {
+export default function GetAllAnimal(props) {
   const accessToken = localStorage.getItem('API_TOKEN');
   if (accessToken === null) {
     getAccessToken();
   }
   const [pets, setPets] = useState(() => {
-    fetch('https://api.petfinder.com/v2/animals?limit=100', {
+    fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
       headers: {
         Authorization: 'Bearer ' + accessToken
       }

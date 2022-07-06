@@ -6,10 +6,16 @@ export default function Home() {
     e.preventDefault();
     window.location.hash = `#random?location=${location}`;
   }
+  let search = 'fa-lg fa-solid fa-magnifying-glass';
+  if (location !== '') {
+    search = 'hidden';
+  } else {
+    search = 'fa-lg fa-solid fa-magnifying-glass';
+  }
   return (
     <div className="col-lg-6 col-md-10 col-sm-10 col-xs-10 h-100 mx-auto">
       <div className="d-flex flex-column h-100 justify-content-center align-items-center">
-        <div className="mb-3">
+        <div className="mb-3 mt-5">
           <h4 className="text-main">Let&apos;s find furever home!</h4>
         </div>
         <div className="home-image-container">
@@ -26,11 +32,11 @@ export default function Home() {
               value={location}
               onChange={e => setLocation(e.target.value)}
               placeholder="         SEARCH: LOCATION, ZIP CODE"
-                className="small w-90 main-icon-container"
+                className="small w-90 main-icon-container height-1rem"
               />
-              <i className="fa-lg fa-solid fa-magnifying-glass"></i>
-              <button type="submit" className="text-main w-90 btn btn-primary h5 border-filter">Random</button>
-              <a href="#recent" className="text-main w-90 btn btn-primary h5 border-filter">List</a>
+              <i className={search}></i>
+              <button type="submit" className="text-main w-90 btn btn-primary h5 border-filter height-1rem">RANDOM PICK</button>
+              <a href={`#recent?location=${location}` } className="text-main w-90 btn btn-primary h5 border-filter height-1rem d-flex align-items-center justify-content-center">SHOW ALL</a>
             </div>
           </form>
         </div>

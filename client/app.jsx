@@ -39,7 +39,7 @@ export default function App() {
       return (
         <div>
         <Header />
-        <GetAllAnimal/>;
+        <GetAllAnimal location={route.params.get('location')} />;
         </div>
       );
     }
