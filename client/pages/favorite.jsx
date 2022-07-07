@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
+const { Loading } = require('../component/spinner');
 
 export default function FavoritePage() {
+  const [load, setLoad] = useState(true);
   const [favorited, setFavorited] = useState(null);
   const [edit, setEdit] = useState(0);
   useEffect(() => {
     if (!favorited) {
       const favoritedPets = JSON.parse(localStorage.getItem('favorite'));
       setFavorited(favoritedPets);
+      setLoad(false);
     }
   }, [favorited]);
   function handleFavorite(event) {
@@ -23,7 +26,7 @@ export default function FavoritePage() {
       </div>
     );
   }
-  if (favorited !== null) {
+  if (favorited !== null && load === false) {
     const pets = favorited.pets;
     return (
     <div>
@@ -47,7 +50,7 @@ export default function FavoritePage() {
                   <p className="pt-0 mt-0 text-gray text-end">{`${eachPet.distance.toFixed(2)}`}miles</p>
                 </div>
               </div>
-              <div className="col-sm-6 col-lg-3 col-md-4">
+              <div className="w-90 col-sm-6 col-lg-3 col-md-4">
                 <button className="w-100 bg-main border-filter text-white" id={eachPet.id} onClick={handleFavorite} >X</button>
               </div>
             </div>
@@ -58,4 +61,5 @@ export default function FavoritePage() {
     </div>
     );
   }
+  return Loading();
 }

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 const { handleLocalStorage } = require('../component/localStorage');
+const { Loading } = require('../component/spinner');
 const fetch = require('node-fetch');
 
 export default function GetRandom(props) {
+  const [load, setLoad] = useState(true);
   const accessToken = localStorage.getItem('API_TOKEN');
   const location = props.location;
   const [animal, setAnimal] = useState(() => {
@@ -14,6 +16,7 @@ export default function GetRandom(props) {
       .then(res => res.json())
       .then(data => {
         setAnimal(data.animals);
+        setLoad(false);
       });
   });
   const [current, setCurrent] = useState(0);
@@ -71,7 +74,7 @@ export default function GetRandom(props) {
     if (animal[current].distance !== null) {
       distance = animal[current].distance.toFixed(2);
     }
-    if (animal) {
+    if (animal && load === false) {
       return (
     <div className="w-100">
       <div className="col-lg-6 mt-3 col-md-10 col-sm-12 mx-auto">
@@ -118,4 +121,5 @@ export default function GetRandom(props) {
       );
     }
   }
+  return Loading();
 }

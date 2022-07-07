@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 const fetch = require('node-fetch');
 const { getAccessToken } = require('../component/petfinder');
+const { Loading } = require('../component/spinner');
 
 export default function GetAllAnimal(props) {
+  const [load, setLoad] = useState(true);
   const accessToken = localStorage.getItem('API_TOKEN');
   const [pets, setPets] = useState(() => {
     fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
@@ -13,6 +15,7 @@ export default function GetAllAnimal(props) {
       .then(res => res.json())
       .then(data => {
         setPets(data.animals);
+        setLoad(false);
       });
   });
   if (props.location === '') {
@@ -26,7 +29,7 @@ export default function GetAllAnimal(props) {
   if (accessToken === null) {
     getAccessToken();
   }
-  if (pets !== undefined) {
+  if (pets !== undefined && load === false) {
     return (
       <div className="w-90 mx-auto mt-5">
         <div className="container-shadow pt-3 pt-3 d-flex flex-wrap justify-content-center mt-2 mb-2 w-100">
@@ -52,4 +55,5 @@ export default function GetAllAnimal(props) {
       </div>
     );
   }
+  return Loading();
 }
