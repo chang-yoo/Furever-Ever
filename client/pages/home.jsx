@@ -31,7 +31,7 @@ export default function Home() {
               types="text"
               value={location}
               onChange={e => setLocation(e.target.value)}
-              placeholder="         SEARCH: CITY, STATE OR ZIP CODE"
+              placeholder="SEARCH: CITY, STATE OR ZIP CODE"
                 className="small w-90 main-icon-container height-1rem"
               />
               <i className={search}></i>
