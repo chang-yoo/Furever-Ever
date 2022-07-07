@@ -7,13 +7,18 @@ import GetRandom from './pages/random';
 import Header from './component/header';
 import FavoritePage from './pages/favorite';
 import NotFound from './component/not-found';
+import Offline from './component/offline';
 // eslint-disable-next-line
 const { getAccessToken } = require('./component/petfinder')
 
 export default function App() {
+  const [status, setStatus] = useState('on');
   const [route, setRoute] = useState(parseRoute(window.location.hash));
   const { path } = route;
   const location = window.location.hash;
+  useEffect(() => {
+    window.addEventListener('offline', event => setStatus('off'));
+  }, [window.location.hash]);
   useEffect(() => {
     getAccessToken();
     window.addEventListener('hashchange', () => {
@@ -21,14 +26,14 @@ export default function App() {
     });
   }, [location]);
   const renderPage = () => {
-    if (path === '') {
+    if (status === 'on' && path === '') {
       return (
       <div>
         <Home/>
         </div>
       );
     }
-    if (path === 'detail') {
+    if (status === 'on' && path === 'detail') {
       return (
         <div>
         <Header />
@@ -36,7 +41,7 @@ export default function App() {
         </div>
       );
     }
-    if (path === 'recent') {
+    if (status === 'on' && path === 'recent') {
       return (
         <div>
         <Header />
@@ -44,7 +49,7 @@ export default function App() {
         </div>
       );
     }
-    if (path === 'random') {
+    if (status === 'on' && path === 'random') {
       return (
         <div>
         <Header />
@@ -52,11 +57,19 @@ export default function App() {
         </div>
       );
     }
-    if (path === 'favorite') {
+    if (status === 'on' && path === 'favorite') {
       return (
         <div>
         <Header />
         <FavoritePage/>
+        </div>
+      );
+    }
+    if (status === 'off') {
+      return (
+        <div>
+          <Header/>
+          <Offline/>
         </div>
       );
     }
