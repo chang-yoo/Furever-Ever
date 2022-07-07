@@ -6,6 +6,7 @@ import GetDetails from './pages/detail';
 import GetRandom from './pages/random';
 import Header from './component/header';
 import FavoritePage from './pages/favorite';
+import NotFound from './component/not-found';
 // eslint-disable-next-line
 const { getAccessToken } = require('./component/petfinder')
 
@@ -59,6 +60,12 @@ export default function App() {
         </div>
       );
     }
+    return (
+      <div>
+        <Header />
+        <NotFound />
+      </div>
+    );
   };
   return (
     <div>
