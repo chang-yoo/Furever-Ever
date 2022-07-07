@@ -12,6 +12,23 @@ export default function GetRandom(props) {
   const [load, setLoad] = useState(true);
   const accessToken = localStorage.getItem('API_TOKEN');
   const location = props.location;
+  useEffect(() => {
+    setLoad(true);
+    fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        const { title } = data;
+        if (title === 'Invalid Request') {
+          setTryAgain(true);
+        }
+        setAnimal(data.animals);
+        setLoad(false);
+      });
+  }, [location]);
   const [tryAgain, setTryAgain] = useState(false);
   const [animal, setAnimal] = useState(() => {
     fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
@@ -40,6 +57,7 @@ export default function GetRandom(props) {
     }
     // eslint-disable-next-line
     function handleCatButton(props){
+      setLoad(true);
       fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=cat&limit=100`, {
         headers: {
           Authorization: 'Bearer ' + accessToken
@@ -48,10 +66,12 @@ export default function GetRandom(props) {
         .then(res => res.json())
         .then(data => {
           setAnimal(data.animals);
+          setLoad(false);
         });
     }
     // eslint-disable-next-line
     function handleDogButton(props){
+      setLoad(true);
       fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=dog&limit=100`, {
         headers: {
           Authorization: 'Bearer ' + accessToken
@@ -60,6 +80,7 @@ export default function GetRandom(props) {
         .then(res => res.json())
         .then(data => {
           setAnimal(data.animals);
+          setLoad(false);
         });
     }
     let leftArrow = 'fa-xl fa-solid fa-arrow-left';
