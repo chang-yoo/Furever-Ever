@@ -39,6 +39,10 @@
   width: 90%;
 }
 
+.w-30 {
+  width: 32%;
+}
+
 input {
   width: 50%;
   margin: auto;
