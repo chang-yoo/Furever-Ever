@@ -17,7 +17,11 @@ export default function FavoritePage() {
     localStorage.setItem('favorite', JSON.stringify(favorited));
   }
   if (favorited !== null && favorited.pets.length === 0) {
-    return <h5>Your favorite list is currently empty</h5>;
+    return (
+      <div className="text-center mt-5">
+        <h5>Your favorite list is currently empty</h5>
+      </div>
+    );
   }
   if (favorited !== null) {
     const pets = favorited.pets;
@@ -32,13 +36,20 @@ export default function FavoritePage() {
         }
         return (
           <div key={pets.indexOf(eachPet)} className="w-100">
-            <div className="w-100 d-flex flex-wrap justify-content-center mt-2 mb-2">
-              <div className="container-shadow random-image-container col-sm-6 col-lg-3 col-md-4 d-flex align-items-center h-auto justify-content-center image-container-allanimal m-2">
+            <div className="w-100 d-flex flex-column align-items-center mt-2 mb-2">
+              <div className="mb-0 bp-0 container-shadow random-image-container col-sm-6 col-lg-3 col-md-4 h-auto image-container-allanimal m-2">
                 <a href={`#detail?petId=${eachPet.id}`}>
-                  <img className="border-radius-10 object-fit" src={photo}></img>
+                  <img className="p-2 border-radius-10 object-fit" src={photo}></img>
                 </a>
+                <div className="w-90 mx-auto">
+                  <p className="pb-0 mb-0 text-main fw-bold text-start">Hi! I&apos;m {`${eachPet.name}`}</p>
+                  <p className="pt-0 mt-0 pb-0 mb-0 text-gray text-end">{`${eachPet.contact.address.city}`}, {`${eachPet.contact.address.state}`}</p>
+                  <p className="pt-0 mt-0 text-gray text-end">{`${eachPet.distance.toFixed(2)}`}miles</p>
+                </div>
               </div>
-              <i id={eachPet.id}onClick={handleFavorite} className="fa-xl fa-solid fa-x pt-4"></i>
+              <div className="col-sm-6 col-lg-3 col-md-4">
+                <button className="w-100 bg-main border-filter text-white" id={eachPet.id} onClick={handleFavorite} >X</button>
+              </div>
             </div>
           </div>
         );
