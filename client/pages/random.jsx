@@ -116,7 +116,7 @@ export default function GetRandom(props) {
               <i onClick={e => setCurrent(current - 1)} className={leftArrow}></i>
             </div>
             <div className="icon-border">
-              <i onClick={e => location.reload()} className="fa-xl fa-solid fa-arrows-rotate"></i>
+              <i onClick={e => window.location.reload()} className="fa-xl fa-solid fa-arrows-rotate"></i>
             </div>
             <div className="icon-border">
                 <i onClick={() => handleLocalStorage(animal[current])} className="fa-xl fa-solid fa-heart"></i>
