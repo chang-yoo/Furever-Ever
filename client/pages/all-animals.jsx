@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 const fetch = require('node-fetch');
-const { getAccessToken } = require('../component/petfinder');
+const { GetAccessToken } = require('../component/petfinder');
 const { Loading } = require('../component/spinner');
+const { TryAgain } = require('../component/try-again');
 
 export default function GetAllAnimal(props) {
+  useEffect(() => {
+    GetAccessToken();
+  }, []);
   const [load, setLoad] = useState(true);
   const accessToken = localStorage.getItem('API_TOKEN');
+  const [tryAgain, setTryAgain] = useState(false);
   const [pets, setPets] = useState(() => {
     fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
       headers: {
@@ -14,6 +19,10 @@ export default function GetAllAnimal(props) {
     })
       .then(res => res.json())
       .then(data => {
+        const { title } = data;
+        if (title === 'Invalid Request') {
+          setTryAgain(true);
+        }
         setPets(data.animals);
         setLoad(false);
       });
@@ -25,9 +34,6 @@ export default function GetAllAnimal(props) {
       <a href="#" className="text-black">Return Home</a>
     </div>
     );
-  }
-  if (accessToken === null) {
-    getAccessToken();
   }
   if (pets !== undefined && load === false) {
     return (
@@ -54,6 +60,9 @@ export default function GetAllAnimal(props) {
         </div>
       </div>
     );
+  }
+  if (tryAgain) {
+    return TryAgain();
   }
   return Loading();
 }

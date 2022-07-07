@@ -173,6 +173,10 @@ hr {
   height: 100px;
 }
 
+span {
+  color: red;
+}
+
 .lds-facebook {
   display: inline-block;
   position: relative;

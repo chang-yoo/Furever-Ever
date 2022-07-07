@@ -1,12 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 const { handleLocalStorage } = require('../component/localStorage');
 const { Loading } = require('../component/spinner');
 const fetch = require('node-fetch');
+const { TryAgain } = require('../component/try-again');
+const { GetAccessToken } = require('../component/petfinder');
 
 export default function GetRandom(props) {
+  useEffect(() => {
+    GetAccessToken();
+  }, []);
   const [load, setLoad] = useState(true);
   const accessToken = localStorage.getItem('API_TOKEN');
   const location = props.location;
+  const [tryAgain, setTryAgain] = useState(false);
   const [animal, setAnimal] = useState(() => {
     fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
       headers: {
@@ -15,6 +21,10 @@ export default function GetRandom(props) {
     })
       .then(res => res.json())
       .then(data => {
+        const { title } = data;
+        if (title === 'Invalid Request') {
+          setTryAgain(true);
+        }
         setAnimal(data.animals);
         setLoad(false);
       });
@@ -120,6 +130,9 @@ export default function GetRandom(props) {
     </div>
       );
     }
+  }
+  if (tryAgain) {
+    return TryAgain();
   }
   return Loading();
 }
