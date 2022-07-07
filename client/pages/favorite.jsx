@@ -33,9 +33,9 @@ export default function FavoritePage() {
         return (
           <div key={pets.indexOf(eachPet)} className="w-100">
             <div className="w-100 d-flex flex-wrap justify-content-center mt-2 mb-2">
-              <div className="col-sm-6 col-lg-3 col-md-4 d-flex align-items-center h-auto justify-content-center image-container-allanimal m-2">
+              <div className="container-shadow random-image-container col-sm-6 col-lg-3 col-md-4 d-flex align-items-center h-auto justify-content-center image-container-allanimal m-2">
                 <a href={`#detail?petId=${eachPet.id}`}>
-                  <img src={photo}></img>
+                  <img className="border-radius-10 object-fit" src={photo}></img>
                 </a>
               </div>
               <i id={eachPet.id}onClick={handleFavorite} className="fa-xl fa-solid fa-x pt-4"></i>
