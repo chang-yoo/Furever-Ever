@@ -4,9 +4,6 @@ const { getAccessToken } = require('../component/petfinder');
 
 export default function GetAllAnimal(props) {
   const accessToken = localStorage.getItem('API_TOKEN');
-  if (accessToken === null) {
-    getAccessToken();
-  }
   const [pets, setPets] = useState(() => {
     fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
       headers: {
@@ -18,6 +15,17 @@ export default function GetAllAnimal(props) {
         setPets(data.animals);
       });
   });
+  if (props.location === '') {
+    return (
+    <div className="d-flex h-50 text-center flex-column justify-content-center align-items-center">
+      <h3 className="text-main">Sorry,<br /> please check your location input <br />and try it again.</h3>
+      <a href="#" className="text-black">Return Home</a>
+    </div>
+    );
+  }
+  if (accessToken === null) {
+    getAccessToken();
+  }
   if (pets !== undefined) {
     return (
       <div className="w-90 mx-auto mt-5">
