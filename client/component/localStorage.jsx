@@ -10,9 +10,13 @@ export const handleLocalStorage = pet => {
     datas.pets.push(pet);
     const JSONPets = JSON.stringify(datas);
     return localStorage.setItem('favorite', JSONPets);
+  } else {
+    datas.pets = data.pets;
+    const check = datas.pets.filter(pets => pets.id === pet.id);
+    if (check.length === 0) {
+      datas.pets.push(pet);
+      const JSONNewPets = JSON.stringify(datas);
+      return localStorage.setItem('favorite', JSONNewPets);
+    }
   }
-  datas.pets = data.pets;
-  datas.pets.push(pet);
-  const JSONNewPets = JSON.stringify(datas);
-  return localStorage.setItem('favorite', JSONNewPets);
 };
