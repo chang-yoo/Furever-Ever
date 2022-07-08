@@ -16,7 +16,7 @@ export default function Home() {
     <div className="col-lg-6 col-md-10 col-sm-10 col-xs-10 h-100 mx-auto">
       <div className="d-flex flex-column h-100 justify-content-center align-items-center">
         <div className="mb-3 mt-5">
-          <h4 className="text-main">Let&apos;s find furever home!</h4>
+          <h4 className="text-main header-text">Let&apos;s find furever home!</h4>
         </div>
         <div className="home-image-container">
           <img className="object-fit" src="/furever-paws.png"></img>
@@ -31,7 +31,7 @@ export default function Home() {
               types="text"
               value={location}
               onChange={e => setLocation(e.target.value)}
-              placeholder="SEARCH: CITY, STATE OR ZIP CODE"
+              placeholder="CITY, STATE OR ZIP CODE"
                 className="small w-90 main-icon-container height-1rem"
               />
               <i className={search}></i>
