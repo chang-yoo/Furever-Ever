@@ -8,7 +8,7 @@ export const GetAccessToken = () => {
     fetch('https://api.petfinder.com/v2/oauth2/token', {
       method: 'POST',
       body: `grant_type=client_credentials&client_id=${process.env.PETFINDER_API_KEY
-        } & client_secret=${process.env.Client_Id}`,
+        }&client_secret=${process.env.Client_Id}`,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -25,7 +25,7 @@ export const GetAccessToken = () => {
     fetch('https://api.petfinder.com/v2/oauth2/token', {
       method: 'POST',
       body: `grant_type=client_credentials&client_id=${process.env.PETFINDER_API_KEY
-        } & client_secret=${process.env.Client_Id}`,
+        }&client_secret=${process.env.Client_Id}`,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
