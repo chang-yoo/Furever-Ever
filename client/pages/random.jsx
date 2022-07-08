@@ -10,6 +10,7 @@ export default function GetRandom(props) {
     GetAccessToken();
   }, []);
   const [load, setLoad] = useState(true);
+  const [choice, setChoice] = useState(null);
   const accessToken = localStorage.getItem('API_TOKEN');
   const location = props.location;
   useEffect(() => {
@@ -66,6 +67,7 @@ export default function GetRandom(props) {
         .then(res => res.json())
         .then(data => {
           setAnimal(data.animals);
+          setChoice('cat');
           setLoad(false);
         });
     }
@@ -80,6 +82,7 @@ export default function GetRandom(props) {
         .then(res => res.json())
         .then(data => {
           setAnimal(data.animals);
+          setChoice('dog');
           setLoad(false);
         });
     }
@@ -105,20 +108,35 @@ export default function GetRandom(props) {
     if (animal[current].distance !== null) {
       distance = animal[current].distance.toFixed(2);
     }
-    if (animal && load === false) {
+    if (load === true) {
+      return Loading();
+    }
+    if (choice === null) {
       return (
-    <div className="w-100">
-      <div className="col-lg-6 mt-3 col-md-10 col-sm-12 mx-auto">
-        <div className="w-90 mx-auto">
-          <div className="d-flex justify-content-between filter-container">
-            <button className="w-25 cat-button text-white" onClick={handleCatButton}>
-              CAT
-            </button>
-            <button className="w-25 dog-button text-white" onClick={handleDogButton}>
-              DOG
-            </button>
+      <div className="w-80 mx-auto mt-5">
+        <div className="w-100 col-lg-6 col-md-8 col-sm-12 col-12 pt-5">
+          <div className="d-flex flex-column container-shadow justify-content-center h-50 align-items-center filter-container">
+            <div className="w-100 text-center">
+              <button className="col-lg-6 col-md-8 col-sm-10 col-10 cat-button text-white" onClick={handleCatButton}>
+              <i className="fa-2x fa-solid fa-cat"></i>
+              <p className="mt-2 mb-1">I&apos;m a cat person, meow!</p>
+              </button>
+            </div>
+            <div className="w-100 text-center mt-5">
+              <button className="col-lg-6 col-md-8 col-sm-10 col-10 dog-button text-white" onClick={handleDogButton}>
+              <i className="fa-2x fa-solid fa-dog"></i>
+              <p className="mt-2 mb-1">I&apos;m a dog person, woof!</p>
+              </button>
+            </div>
           </div>
         </div>
+      </div>
+      );
+    }
+    if (animal && load === false && choice !== null) {
+      return (
+      <div className="w-80 mt-3 ">
+      <div className="col-lg-6 mt-3 col-md-10 col-sm-12 mx-auto">
         <div className="mx-auto text-center">
           <div className="w-90 box-shadows mx-auto pb-2">
             <div className="pt-3 pb-3 w-90 random-image-container mx-auto">

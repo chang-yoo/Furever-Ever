@@ -8,6 +8,7 @@ import Header from './component/header';
 import FavoritePage from './pages/favorite';
 import NotFound from './component/not-found';
 import Offline from './component/offline';
+
 const { GetAccessToken } = require('./component/petfinder');
 
 export default function App() {
