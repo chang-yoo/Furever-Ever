@@ -11,6 +11,9 @@ import Offline from './component/offline';
 const { GetAccessToken } = require('./component/petfinder');
 
 export default function App() {
+  useEffect(() => {
+    GetAccessToken();
+  }, []);
   const [status, setStatus] = useState('on');
   const [route, setRoute] = useState(parseRoute(window.location.hash));
   const { path } = route;
