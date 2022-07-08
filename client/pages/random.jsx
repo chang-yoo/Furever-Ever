@@ -1,10 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 const { handleLocalStorage } = require('../component/localStorage');
+const { Loading } = require('../component/spinner');
 const fetch = require('node-fetch');
+const { TryAgain } = require('../component/try-again');
+const { GetAccessToken } = require('../component/petfinder');
 
 export default function GetRandom(props) {
+  useEffect(() => {
+    GetAccessToken();
+  }, []);
+  const [load, setLoad] = useState(true);
   const accessToken = localStorage.getItem('API_TOKEN');
   const location = props.location;
+  useEffect(() => {
+    setLoad(true);
+    fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      }
+    })
+      .then(res => res.json())
+      .then(data => {
+        const { title } = data;
+        if (title === 'Invalid Request') {
+          setTryAgain(true);
+        }
+        setAnimal(data.animals);
+        setLoad(false);
+      });
+  }, [location]);
+  const [tryAgain, setTryAgain] = useState(false);
   const [animal, setAnimal] = useState(() => {
     fetch(`https://api.petfinder.com/v2/animals?location=${props.location}&distance=30&limit=100`, {
       headers: {
@@ -13,7 +38,12 @@ export default function GetRandom(props) {
     })
       .then(res => res.json())
       .then(data => {
+        const { title } = data;
+        if (title === 'Invalid Request') {
+          setTryAgain(true);
+        }
         setAnimal(data.animals);
+        setLoad(false);
       });
   });
   const [current, setCurrent] = useState(0);
@@ -27,6 +57,7 @@ export default function GetRandom(props) {
     }
     // eslint-disable-next-line
     function handleCatButton(props){
+      setLoad(true);
       fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=cat&limit=100`, {
         headers: {
           Authorization: 'Bearer ' + accessToken
@@ -35,10 +66,12 @@ export default function GetRandom(props) {
         .then(res => res.json())
         .then(data => {
           setAnimal(data.animals);
+          setLoad(false);
         });
     }
     // eslint-disable-next-line
     function handleDogButton(props){
+      setLoad(true);
       fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=dog&limit=100`, {
         headers: {
           Authorization: 'Bearer ' + accessToken
@@ -47,6 +80,7 @@ export default function GetRandom(props) {
         .then(res => res.json())
         .then(data => {
           setAnimal(data.animals);
+          setLoad(false);
         });
     }
     let leftArrow = 'fa-xl fa-solid fa-arrow-left';
@@ -71,7 +105,7 @@ export default function GetRandom(props) {
     if (animal[current].distance !== null) {
       distance = animal[current].distance.toFixed(2);
     }
-    if (animal) {
+    if (animal && load === false) {
       return (
     <div className="w-100">
       <div className="col-lg-6 mt-3 col-md-10 col-sm-12 mx-auto">
@@ -103,7 +137,7 @@ export default function GetRandom(props) {
               <i onClick={e => setCurrent(current - 1)} className={leftArrow}></i>
             </div>
             <div className="icon-border">
-              <i onClick={e => location.reload()} className="fa-xl fa-solid fa-arrows-rotate"></i>
+              <i onClick={e => window.location.reload()} className="fa-xl fa-solid fa-arrows-rotate"></i>
             </div>
             <div className="icon-border">
                 <i onClick={() => handleLocalStorage(animal[current])} className="fa-xl fa-solid fa-heart"></i>
@@ -118,4 +152,8 @@ export default function GetRandom(props) {
       );
     }
   }
+  if (tryAgain) {
+    return TryAgain();
+  }
+  return Loading();
 }

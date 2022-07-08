@@ -1,6 +1,8 @@
+// eslint-disable-next-line
+import React from "react"
 const fetch = require('node-fetch');
 
-export const getAccessToken = () => {
+export const GetAccessToken = () => {
   const tokenExist = localStorage.getItem('API_TOKEN');
   if (tokenExist === null) {
     fetch('https://api.petfinder.com/v2/oauth2/token', {
@@ -17,11 +19,9 @@ export const getAccessToken = () => {
         const { access_token } = data;
         // eslint-disable-next-line
         const accessToken = access_token
-        localStorage.setItem('API_TOKEN', accessToken);
-        return accessToken;
+        return localStorage.setItem('API_TOKEN', accessToken);
       });
   } else {
-    localStorage.removeItem('API_TOKEN');
     fetch('https://api.petfinder.com/v2/oauth2/token', {
       method: 'POST',
       body: `grant_type=client_credentials&client_id=${process.env.PETFINDER_API_KEY
@@ -36,8 +36,7 @@ export const getAccessToken = () => {
         const { access_token } = data;
         // eslint-disable-next-line
         const accessToken = access_token
-        localStorage.setItem('API_TOKEN', accessToken);
-        return accessToken;
+        return localStorage.setItem('API_TOKEN', accessToken);
       });
   }
 };

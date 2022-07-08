@@ -54,67 +54,66 @@ export default function GetDetails(props) {
     return (
     <div className="w-100 mx-auto mt-3 d-flex flex-lg-row flex-column justify-content-center">
       <div className="col-lg-5 col-md-12 mx-3">
-        <div className="w-100 mx-auto h-70">
-          <img className="h-75 object-fit"src={photo}></img>
+        <div className="w-100 mx-auto h-50">
+          <img className="object-fit"src={photo}></img>
         </div>
         <div>
-          <small>Contact</small>
-          <br/>
+          <h5>Contact</h5>
           <a href={'tel:' + phone}>Phone: {phone}</a>
           <br/>
           <a href={'mailto:' + email}>Email: {email}</a>
         </div>
         <hr/>
         <div>
-          <small>Status on {status_changed_at.split('T')[0]}</small>
-          <p>{status}</p>
+          <h5>Status on {status_changed_at.split('T')[0]}</h5>
+          <h4>{status}</h4>
         </div>
         <hr />
       </div>
       <div className="col-lg-5 col-md-12 mx-3">
         <div>
-          <small>Name</small>
-          <p>{name}</p>
+          <h5>Name</h5>
+          <h4>{name}</h4>
         </div>
         <hr />
         <div>
-          <small>Description</small>
-          <p>{descriptions}</p>
+          <h5>Description</h5>
+          <h4>{descriptions}</h4>
         </div>
         <hr />
         <div>
-          <small>Breeds</small>
-          <p>Primary: {primary}<br />Secondary: {'' + secondary}<br />Mixed: {'' + mixed}</p>
+          <h5>Breeds</h5>
+          <h4>Primary: {primary}<br />Secondary: {'' + secondary}<br />Mixed: {'' + mixed}</h4>
         </div>
         <hr/>
         <div>
-          <small>Age</small>
-          <p>{age}</p>
+          <h5>Age</h5>
+          <h4>{age}</h4>
         </div>
         <hr/>
         <div>
-          <small>Attributes</small>
-          <p>Spayed/Neutered: {'' + spayed_neutered} <br/>Speical Need: {'' + special_needs} <br/>Shots Current: {'' + shots_current}</p>
+          <h5>Attributes</h5>
+          <h4>Spayed/Neutered: {'' + spayed_neutered} <br/>Speical Need: {'' + special_needs} <br/>Shots Current: {'' + shots_current}</h4>
         </div>
         <hr/>
         <div>
-          <small>Type</small>
-          <p>{type}</p>
+          <h5>Type</h5>
+          <h4>{type}</h4>
         <hr/>
         </div>
         <div>
-          <small>Size</small>
-          <p>{size}</p>
+          <h5>Size</h5>
+          <h4>{size}</h4>
           <hr />
         </div>
         <div>
-          <small>Coat</small>
-          <p>{coat}</p>
+          <h5>Coat</h5>
+          <h4>{coat}</h4>
         </div>
         <hr />
         <div>
-          <small>Tags</small>
-          <p>{allTags}</p>
+          <h5>Tags</h5>
+          <h4>{allTags}</h4>
         </div>
         <hr />
       </div>
