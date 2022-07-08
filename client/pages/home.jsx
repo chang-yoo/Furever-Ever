@@ -16,7 +16,7 @@ export default function Home() {
     <div className="col-lg-6 col-md-10 col-sm-10 col-xs-10 h-100 mx-auto">
       <div className="d-flex flex-column h-100 justify-content-center align-items-center">
         <div className="mb-3 mt-5">
-          <h4 className="text-main header-text">Let&apos;s find furever home!</h4>
+          <h5 className="text-main header-text"></h5>
         </div>
         <div className="home-image-container">
           <img className="object-fit" src="/furever-paws.png"></img>
@@ -32,11 +32,11 @@ export default function Home() {
               value={location}
               onChange={e => setLocation(e.target.value)}
               placeholder="CITY, STATE OR ZIP CODE"
-                className="small w-90 main-icon-container height-1rem"
+                className="button-border-box small w-90 main-icon-container height-1rem"
               />
               <i className={search}></i>
-              <button type="submit" className="text-main w-90 btn btn-primary h5 border-filter height-1rem">RANDOM PICK</button>
-              <a href={`#recent?location=${location}` } className="text-main w-90 btn btn-primary h5 border-filter height-1rem d-flex align-items-center justify-content-center">SHOW ALL</a>
+              <button type="submit" className="button-border-box text-main w-90 btn btn-white h5 border-filter height-1rem">RANDOM PICK IN YOUR AREA</button>
+              <a href={`#recent?location=${location}`} className="button-border-box text-white bg-main w-90 btn btn-primary h5 border-filter height-1rem d-flex align-items-center justify-content-center">SHOW ALL WITHIN YOUR AREA</a>
             </div>
           </form>
         </div>
