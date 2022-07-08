@@ -1,22 +1,26 @@
 require('dotenv/config');
 const Dotenv = require('dotenv-webpack');
-
+const webpack = require('webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const path = require('path');
-
+const serverPublicPath = path.join(__dirname, 'server', 'public');
 const clientPath = path.join(__dirname, 'client/');
-const publicPath = path.join(__dirname, 'server/public/');
+
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
   mode: process.env.NODE_ENV,
   plugins: [
     new Dotenv()
   ],
+  entry: [
+    clientPath
+  ].filter(Boolean),
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  entry: clientPath,
   output: {
-    path: publicPath
+    path: serverPublicPath
   },
   module: {
     rules: [
@@ -35,7 +39,7 @@ module.exports = {
   },
   devtool: 'source-map',
   devServer: {
-    contentBase: publicPath,
+    contentBase: serverPublicPath,
     historyApiFallback: true,
     host: '0.0.0.0',
     port: process.env.DEV_SERVER_PORT,
@@ -43,6 +47,13 @@ module.exports = {
       '/api': `http://localhost:${process.env.PORT}`
     },
     stats: 'minimal',
-    watchContentBase: true
+    watchContentBase: true,
+    devtool: isDevelopment ? 'cheap-module-source-map' : 'source-map',
+    plugins: [
+      new webpack.EnvironmentPlugin([]),
+      isDevelopment && new ReactRefreshWebpackPlugin(),
+      isDevelopment && new webpack.NoEmitOnErrorsPlugin(),
+      isDevelopment && new webpack.HotModuleReplacementPlugin()
+    ].filter(Boolean)
   }
 };
