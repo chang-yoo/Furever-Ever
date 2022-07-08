@@ -1,5 +1,5 @@
 * {
-  font-family: "Bebas Neue", sans-serif;
+  font-family: Kanit, sans-serif;
 }
 
 .h-100 {
@@ -14,6 +14,36 @@
 
 .header-text {
   font-family: "Permanent Marker", sans-serif;
+}
+
+.header-text::after {
+  content: "";
+  animation: spin 10s linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes spin {
+  0% {
+    opacity: 0;
+    content: "LET'S FIND FUR-EVER HOME!";
+  }
+
+  25% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    content: "AND THEY LIVED HAPPILY EVER AFTER!";
+  }
 }
 
 .image-container-allanimal {
@@ -69,11 +99,11 @@ input {
 }
 
 .bg-main {
-  background-color: #7635f9;
+  background-color: #9866bd;
 }
 
 .border-filter {
-  border: 1.5px solid #7635f9 !important;
+  border: 2px solid #9866bd !important;
 }
 
 .cat-button {
@@ -101,11 +131,11 @@ input {
 }
 
 .main-icon-container {
-  border: 1.5px solid #838383 !important;
+  border: 2px solid #838383 !important;
 }
 
 .fa-arrow-right {
-  color: #7635f9;
+  color: #9866bd;
 }
 
 .fa-heart {
@@ -136,11 +166,15 @@ input {
 }
 
 .btn-primary {
+  background-color: #9866bd !important;
+}
+
+.btn-white {
   background-color: white !important;
 }
 
 .text-main {
-  color: #7635f9 !important;
+  color: #9866bd !important;
 }
 
 a {
@@ -171,13 +205,17 @@ i:hover {
 }
 
 hr {
-  border: 1px solid #7635f9 !important;
+  border: 1px solid #9866bd !important;
 }
 
 .icon-border {
   padding: 0.8rem;
   border-radius: 100%;
   box-shadow: 0 7px 5px 1px rgb(0, 0, 0, 0.1);
+}
+
+.button-border-box {
+  box-shadow: 0 5px 3px 5px rgb(0, 0, 0, 0.15);
 }
 
 .logo-container {
@@ -201,7 +239,7 @@ span {
   position: absolute;
   left: 8px;
   width: 16px;
-  background: #7635f9;
+  background: #9866bd;
   animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
 }
 

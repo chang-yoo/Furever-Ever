@@ -45,9 +45,9 @@ export default function FavoritePage() {
                   <img className="p-2 border-radius-10 object-fit" src={photo}></img>
                 </a>
                 <div className="w-90 mx-auto">
-                  <p className="pb-0 mb-0 text-main fw-bold text-start">Hi! I&apos;m {`${eachPet.name}`}</p>
+                  <h4 className="pb-0 mb-0 text-main text-start">Hi! I&apos;m {`${eachPet.name}`}</h4>
                   <p className="pt-0 mt-0 pb-0 mb-0 text-gray text-end">{`${eachPet.contact.address.city}`}, {`${eachPet.contact.address.state}`}</p>
-                  <p className="pt-0 mt-0 text-gray text-end">{`${eachPet.distance.toFixed(2)}`}miles</p>
+                  <p className="pt-0 mb-0 mt-0 text-gray text-end">{`${eachPet.distance.toFixed(2)}`}miles</p>
                 </div>
               </div>
               <div className="w-90 col-sm-6 col-lg-3 col-md-4">
