@@ -8,8 +8,7 @@ import Header from './component/header';
 import FavoritePage from './pages/favorite';
 import NotFound from './component/not-found';
 import Offline from './component/offline';
-// eslint-disable-next-line
-const { GetAccessToken } = require('./component/petfinder')
+const { GetAccessToken } = require('./component/petfinder');
 
 export default function App() {
   const [status, setStatus] = useState('on');
