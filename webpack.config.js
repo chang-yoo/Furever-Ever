@@ -1,20 +1,18 @@
 require('dotenv/config');
-const Dotenv = require('dotenv-webpack');
+const path = require('path');
 const webpack = require('webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
-const path = require('path');
+
+const clientPath = path.join(__dirname, 'client');
 const serverPublicPath = path.join(__dirname, 'server', 'public');
-const clientPath = path.join(__dirname, 'client/');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  plugins: [
-    new Dotenv()
-  ],
   entry: [
-    clientPath
+    clientPath,
+    isDevelopment && 'webpack-hot-middleware/client?timeout=1000'
   ].filter(Boolean),
   resolve: {
     extensions: ['.js', '.jsx']
@@ -25,35 +23,36 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx/,
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
+            presets: [
+              '@babel/preset-env'
+            ],
             plugins: [
-              '@babel/plugin-transform-react-jsx'
-            ]
+              '@babel/plugin-transform-react-jsx',
+              isDevelopment && 'react-refresh/babel'
+            ].filter(Boolean)
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
       }
     ]
   },
-  devtool: 'source-map',
-  devServer: {
-    contentBase: serverPublicPath,
-    historyApiFallback: true,
-    host: '0.0.0.0',
-    port: process.env.DEV_SERVER_PORT,
-    proxy: {
-      '/api': `http://localhost:${process.env.PORT}`
-    },
-    stats: 'minimal',
-    watchContentBase: true,
-    devtool: isDevelopment ? 'cheap-module-source-map' : 'source-map',
-    plugins: [
-      new webpack.EnvironmentPlugin([]),
-      isDevelopment && new ReactRefreshWebpackPlugin(),
-      isDevelopment && new webpack.NoEmitOnErrorsPlugin(),
-      isDevelopment && new webpack.HotModuleReplacementPlugin()
-    ].filter(Boolean)
-  }
+  stats: 'minimal',
+  devtool: isDevelopment ? 'cheap-module-source-map' : 'source-map',
+  plugins: [
+    new webpack.EnvironmentPlugin(['REACT_APP_Client_Id', 'REACT_APP_PETFINDER_API_KEY']),
+    isDevelopment && new ReactRefreshWebpackPlugin(),
+    isDevelopment && new webpack.NoEmitOnErrorsPlugin(),
+    isDevelopment && new webpack.HotModuleReplacementPlugin()
+  ].filter(Boolean)
 };
