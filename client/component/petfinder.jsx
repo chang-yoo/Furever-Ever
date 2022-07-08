@@ -7,8 +7,8 @@ export const GetAccessToken = () => {
   if (tokenExist === null || !tokenExist) {
     fetch('https://api.petfinder.com/v2/oauth2/token', {
       method: 'POST',
-      body: `grant_type=client_credentials&client_id=${process.env.REACR_APP_Client_Id
-        }&client_secret=${process.env.REACR_APP_PETFINDER_API_KEY}`,
+      body: `grant_type=client_credentials&client_id=${process.env.REACT_APP_Client_Id
+        }&client_secret=${process.env.REACT_APP_PETFINDER_API_KEY}`,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
@@ -24,8 +24,8 @@ export const GetAccessToken = () => {
   } else {
     fetch('https://api.petfinder.com/v2/oauth2/token', {
       method: 'POST',
-      body: `grant_type=client_credentials&client_id=${process.env.REACR_APP_Client_Id
-        }&client_secret=${process.env.REACR_APP_PETFINDER_API_KEY}`,
+      body: `grant_type=client_credentials&client_id=${process.env.REACT_APP_Client_Id
+        }&client_secret=${process.env.REACT_APP_PETFINDER_API_KEY}`,
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
