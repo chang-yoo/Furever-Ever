@@ -18,7 +18,7 @@ export default function Home() {
         <div className="mb-3 mt-5">
           <h5 className="text-main header-text"></h5>
         </div>
-        <div className="home-image-container">
+        <div className="w-90 home-image-container">
           <img className="object-fit" src="/furever-paws.png"></img>
         </div>
         <div className="w-90 h-30 mt-5 pt-3 pb-3 text-center mx-auto box-shadow">
@@ -36,7 +36,7 @@ export default function Home() {
               />
               <i className={search}></i>
               <button type="submit" className="button-border-box text-main w-90 btn btn-white h5 border-filter height-1rem">RANDOM PICK IN YOUR AREA</button>
-              <a href={`#recent?location=${location}`} className="button-border-box text-white bg-main w-90 btn btn-primary h5 border-filter height-1rem d-flex align-items-center justify-content-center">SHOW ALL WITHIN YOUR AREA</a>
+              <a href={`#recent?location=${location}`} className="button-border-box text-white bg-main w-90 btn btn-primary h5 border-filter height-1rem d-flex align-items-center justify-content-center">SHOW ALL IN YOUR AREA</a>
             </div>
           </form>
         </div>

@@ -9,9 +9,9 @@ export default function Header() {
           <div>
               <i onClick={() => { window.location.hash = '#'; }} className="fa-2x fa-solid fa-house"></i>
           </div>
-          <div className=" mx-auto text-center">
-            <a href="# ">
-              <img className="logo-container" src="furever-paws.png"></img>
+          <div className="mx-auto text-center">
+            <a href="#">
+              <img className="w-10 logo-container" src="furever-paws.png"></img>
             </a>
           </div>
           <div className="favorite-icon-container">

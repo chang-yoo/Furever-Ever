@@ -122,7 +122,10 @@ export default function GetRandom(props) {
         <div className="mx-auto text-center">
           <div className="w-90 box-shadows mx-auto pb-2">
             <div className="pt-3 pb-3 w-90 random-image-container mx-auto">
-              <a href={`#detail?petId=${animal[current].id}`}><img className="object-fit"src={photo}/></a>
+              <a href={`#detail?petId=${animal[current].id}`}>
+                <img className="object-fit"src={photo}/>
+                <i className="hand fa-lg fa-regular fa-hand-point-up"></i>
+              </a>
             </div>
           <div>
             <div className="w-90 mx-auto">

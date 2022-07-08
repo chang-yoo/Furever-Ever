@@ -16,6 +16,15 @@
   font-family: "Permanent Marker", sans-serif;
 }
 
+.hand {
+  opacity: 0.3;
+  text-align: end;
+}
+
+.w-10 {
+  width: 10%;
+}
+
 .header-text::after {
   content: "";
   animation: spin 10s linear;
