@@ -49,7 +49,7 @@ export default function GetRandom(props) {
   const [current, setCurrent] = useState(0);
   if (animal) {
     const { photos } = animal[current];
-    let photo = '/furever-paws.png';
+    let photo = '/furever-placeholder.png';
     if (photos.length > 0) {
       const firstImage = photos[0];
       const { medium } = firstImage;

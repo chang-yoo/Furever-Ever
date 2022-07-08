@@ -44,7 +44,7 @@ export default function GetDetails(props) {
     };
     const allTags = getTags(tags);
 
-    let photo = '/furever-paws.png';
+    let photo = '/furever-placeholder.png';
     if (photos.length > 0) {
       const firstImage = photos[0];
       const { medium } = firstImage;

@@ -95,7 +95,7 @@ export default function GetAllAnimal(props) {
         </div>
         <div className="container-shadow pt-3 pt-3 d-flex flex-wrap justify-content-center mt-2 mb-2 w-100">
           {pets.map(eachPet => {
-            let photo = '/furever-paws.png';
+            let photo = '/furever-placeholder.png';
             if (eachPet.photos[0] !== undefined) {
               photo = eachPet.photos[0].medium;
             }

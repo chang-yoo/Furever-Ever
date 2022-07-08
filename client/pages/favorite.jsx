@@ -31,7 +31,7 @@ export default function FavoritePage() {
     return (
     <div>
       {pets.map(eachPet => {
-        let photo = '/furever-paws.png';
+        let photo = '/furever-placeholder.png';
         if (eachPet.photos.length > 0) {
           const firstImage = eachPet.photos[0];
           const { medium } = firstImage;
