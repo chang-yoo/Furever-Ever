@@ -132,6 +132,10 @@ input {
   border: 2px solid #9866bd !important;
 }
 
+.border-filter-2 {
+  border: 2px solid #d5b5ee !important;
+}
+
 .cat-button {
   background-color: red;
   border: 1px solid red;
@@ -195,6 +199,10 @@ input {
   background-color: #9866bd !important;
 }
 
+.btn-secondary {
+  background-color: #d5b5ee !important;
+}
+
 .btn-white {
   background-color: white !important;
 }
@@ -241,7 +249,7 @@ hr {
 }
 
 .button-border-box {
-  box-shadow: 0 5px 3px 5px rgb(0, 0, 0, 0.15);
+  box-shadow: 0 5px 3px 3px rgb(0, 0, 0, 0.15);
 }
 
 .logo-container {

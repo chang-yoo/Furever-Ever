@@ -15,8 +15,8 @@ export default function Home() {
   return (
     <div className="col-lg-6 col-md-10 col-sm-10 col-xs-10 h-100 mx-auto flex-lg-row flex-md-row flex-sm-column flex-col-column">
       <div className="d-flex flex-column h-100 justify-content-center align-items-center">
-        <div className="mb-3 mt-5">
-          <h5 className="text-main header-text"></h5>
+        <div className="w-90 mb-3 mt-5">
+          <h6 className="text-main text-center header-text"></h6>
         </div>
         <div className="w-90 home-image-container">
           <img className="object-fit" src="/furever-paws.png"></img>
@@ -35,8 +35,8 @@ export default function Home() {
                 className="button-border-box small w-90 main-icon-container height-1rem"
               />
               <i className={search}></i>
-              <button type="submit" className="button-border-box text-main w-90 btn btn-white h5 border-filter height-1rem">RANDOM PICK IN YOUR AREA</button>
-              <a href={`#recent?location=${location}`} className="button-border-box text-main w-90 btn btn-white h5 border-filter height-1rem d-flex align-items-center justify-content-center">SHOW ALL IN YOUR AREA</a>
+              <button type="submit" className="button-border-box text-main w-90 btn btn-primary text-white h5 border-filter height-1rem">FIND A MATCH IN YOUR AREA</button>
+              <a href={`#recent?location=${location}`} className="button-border-box text-white w-90 btn btn-secondary h5 border-filter-2 height-1rem d-flex align-items-center justify-content-center">SHOW ALL IN YOUR AREA</a>
             </div>
           </form>
         </div>
