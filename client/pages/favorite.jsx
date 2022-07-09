@@ -51,7 +51,7 @@ export default function FavoritePage() {
                 </div>
               </div>
               <div className="w-90 col-sm-6 col-lg-3 col-md-4">
-                <button className="w-100 bg-main border-filter text-white" id={eachPet.id} onClick={handleFavorite} >X</button>
+                <button className="z-index-3 w-100 bg-main border-filter text-white" id={eachPet.id} onClick={handleFavorite} >X</button>
               </div>
             </div>
           </div>
