@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 const fetch = require('node-fetch');
+const { handleLocalStorage } = require('../component/localStorage');
 const { GetAccessToken } = require('../component/petfinder');
 const { Loading } = require('../component/spinner');
 const { TryAgain } = require('../component/try-again');
@@ -106,6 +107,7 @@ export default function GetAllAnimal(props) {
                     <a href={`#detail?petId=${eachPet.id}`}>
                       <img className="object-fit border-radius-10" src={photo}></img>
                     </a>
+                    <i onClick={() => handleLocalStorage(eachPet)} className="fa-xl fa-solid fa-heart"></i>
                   </div>
                 </div>
               </div>
