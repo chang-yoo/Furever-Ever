@@ -13,7 +13,7 @@
 }
 
 .header-text {
-  font-family: "Permanent Marker", sans-serif;
+  font-family: Anton, sans-serif;
 }
 
 .hand {
@@ -255,8 +255,8 @@ hr {
   border: 2px solid #9866bd !important;
 }
 
-.button-border-box {
-  box-shadow: 0 5px 3px 3px rgb(0, 0, 0, 0.15);
+.border-bottom {
+  border-bottom: 1px solid #838383;
 }
 
 .logo-container {

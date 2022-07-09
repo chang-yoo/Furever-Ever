@@ -102,12 +102,14 @@ export default function GetAllAnimal(props) {
             }
             return (
               <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 w-30 my-3 " key={eachPet.id}>
-                <div className="d-flex justify-content-between">
-                  <div className="border-radius-10 image-container-allanimal mx-auto w-90">
+                <div className="d-flex justify-content-between mb-3">
+                  <div className="border-radius-10 image-container-allanimal mx-auto w-90 mb-3">
                     <a href={`#detail?petId=${eachPet.id}`}>
                       <img className="object-fit border-radius-10" src={photo}></img>
                     </a>
-                    <i onClick={() => handleLocalStorage(eachPet)} className="fa-xl fa-solid fa-heart"></i>
+                    <div className="text-center border-bottom mb-2">
+                    <i onClick={() => handleLocalStorage(eachPet)} className="fa-2x fa-solid fa-heart"></i>
+                    </div>
                   </div>
                 </div>
               </div>

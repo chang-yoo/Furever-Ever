@@ -16,9 +16,9 @@ export default function Home() {
     <div className="col-lg-6 col-md-10 col-sm-10 col-xs-10 h-100 mx-auto flex-lg-row flex-md-row flex-sm-column flex-col-column">
       <div className="d-flex flex-column h-100 justify-content-center align-items-center">
         <div className="w-90 mb-3 mt-5">
-          <h6 className="text-main text-center header-text"></h6>
+          <h4 className="text-main text-center header-text"></h4>
         </div>
-        <div className="w-90 home-image-container">
+        <div className="col-lg-6 col-md-10 col-sm-10 col-xs-10 w-90 home-image-container">
           <img className="object-fit" src="/furever-paws.png"></img>
         </div>
         <div className="w-90 h-30 mt-5 pt-3 pb-3 text-center mx-auto box-shadow">
