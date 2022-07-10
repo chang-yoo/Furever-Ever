@@ -53,8 +53,8 @@ export default function GetRandom(props) {
     let photo = '/furever-placeholder.png';
     if (photos.length > 0) {
       const firstImage = photos[0];
-      const { medium } = firstImage;
-      photo = medium;
+      const { large } = firstImage;
+      photo = large;
     }
     // eslint-disable-next-line
     function handleCatButton(props){
