@@ -47,15 +47,15 @@ export default function GetDetails(props) {
     let photo = '/furever-placeholder.png';
     if (photos.length > 0) {
       const firstImage = photos[0];
-      const { medium } = firstImage;
-      photo = medium;
+      const { large } = firstImage;
+      photo = large;
     }
 
     return (
-    <div className="w-100 mx-auto mt-3 d-flex flex-lg-row flex-column justify-content-center">
-      <div className="col-lg-5 col-md-8 col-sm-12 mx-3">
-        <div className="w-100 mx-auto h-50 d-flex justify-content-center">
-          <img className="object-fit"src={photo}></img>
+    <div className="w-100 mx-auto mt-3 d-flex flex-column align-items-center">
+      <div className="col-lg-5 col-md-8 col-sm-10 col-10 mx-3">
+        <div className="mb-3 detail-image-container mx-auto d-flex justify-content-center">
+          <img className="border-radius-10 object-fit"src={photo}></img>
         </div>
         <div>
           <h5 className="text-main">Contact</h5>
@@ -70,7 +70,7 @@ export default function GetDetails(props) {
         </div>
         <hr />
       </div>
-      <div className="col-lg-5 col-md-12 mx-3">
+      <div className="col-lg-5 col-md-8 col-sm-10 col-10 mx-3">
         <div>
           <h5 className="text-main">Name</h5>
           <h4>{name}</h4>

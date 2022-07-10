@@ -61,7 +61,7 @@ export default function GetAllAnimal(props) {
           {pets.map(eachPet => {
             let photo = '/furever-placeholder.png';
             if (eachPet.photos[0] !== undefined) {
-              photo = eachPet.photos[0].medium;
+              photo = eachPet.photos[0].large;
             }
             return (
               <div className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 w-30 my-3 " key={eachPet.id}>
