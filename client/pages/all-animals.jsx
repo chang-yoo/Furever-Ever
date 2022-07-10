@@ -46,33 +46,6 @@ export default function GetAllAnimal(props) {
         setLoad(false);
       });
   });
-  function handleCatButton(props) {
-    setLoad(true);
-    fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=cat&limit=100`, {
-      headers: {
-        Authorization: 'Bearer ' + accessToken
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        setPets(data.animals);
-        setLoad(false);
-      });
-  }
-  // eslint-disable-next-line
-  function handleDogButton(props) {
-    setLoad(true);
-    fetch(`https://api.petfinder.com/v2/animals?location=${location}&distance=30&type=dog&limit=100`, {
-      headers: {
-        Authorization: 'Bearer ' + accessToken
-      }
-    })
-      .then(res => res.json())
-      .then(data => {
-        setPets(data.animals);
-        setLoad(false);
-      });
-  }
   if (props.location === '') {
     return (
     <div className="d-flex h-50 text-center flex-column justify-content-center align-items-center">
@@ -84,16 +57,6 @@ export default function GetAllAnimal(props) {
   if (pets !== undefined && load === false) {
     return (
       <div className="w-90 mx-auto mt-5">
-        <div className="w-90 mx-auto">
-          <div className="d-flex justify-content-between filter-container">
-            <button className="w-25 cat-button text-white" onClick={handleCatButton}>
-              CAT
-            </button>
-            <button className="w-25 dog-button text-white" onClick={handleDogButton}>
-              DOG
-            </button>
-          </div>
-        </div>
         <div className="container-shadow pt-3 pt-3 d-flex flex-wrap justify-content-center mt-2 mb-2 w-100">
           {pets.map(eachPet => {
             let photo = '/furever-placeholder.png';
