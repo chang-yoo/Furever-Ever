@@ -114,19 +114,21 @@ export default function GetRandom(props) {
     if (choice === null) {
       return (
       <div className="w-80 mx-auto mt-5">
-        <div className="w-100 col-lg-6 col-md-8 col-sm-12 col-12 pt-5">
-          <div className="d-flex flex-column container-shadow justify-content-center h-50 align-items-center filter-container">
-            <div className="w-100 text-center">
-              <button className="col-lg-6 col-md-8 col-sm-10 col-10 cat-button text-white" onClick={handleCatButton}>
-              <i className="fa-2x fa-solid fa-cat"></i>
-              <p className="mt-2 mb-1">I&apos;m a cat person, meow!</p>
-              </button>
-            </div>
-            <div className="w-100 text-center mt-5">
-              <button className="col-lg-6 col-md-8 col-sm-10 col-10 dog-button text-white" onClick={handleDogButton}>
-              <i className="fa-2x fa-solid fa-dog"></i>
-              <p className="mt-2 mb-1">I&apos;m a dog person, woof!</p>
-              </button>
+        <div className="w-100 d-flex justify-content-center col-lg-6 col-md-8 col-sm-12 col-12 pt-5">
+          <div className="d-flex w-75 justify-content-center h-50 align-items-center filter-container">
+            <div className="h-50 d-flex justify-content-center flex-column align-items-center col-lg-6 col-md-8 col-sm-12 col-12 container-shadow">
+              <div className="w-100 text-center">
+                <button className="col-lg-6 col-md-8 col-sm-10 col-10 cat-button text-white" onClick={handleCatButton}>
+                <i className="fa-2x fa-solid fa-cat"></i>
+                <p className="mt-2 mb-1">I&apos;m a cat person, meow!</p>
+                </button>
+              </div>
+              <div className="w-100 text-center mt-5">
+                <button className="col-lg-6 col-md-8 col-sm-10 col-10 dog-button text-white" onClick={handleDogButton}>
+                <i className="fa-2x fa-solid fa-dog"></i>
+                <p className="mt-2 mb-1">I&apos;m a dog person, woof!</p>
+                </button>
+              </div>
             </div>
           </div>
         </div>
